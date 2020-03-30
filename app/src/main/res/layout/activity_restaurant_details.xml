@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="restaurant"
+            type="com.cartoaware.mvvm.model.RestaurantDetail" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="8dp"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/restaurant_details_img"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            app:imageUrl="@{restaurant.coverImgUrl}" />
+
+        <TextView
+            android:id="@+id/restaurant_details_desc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="25sp"
+            android:maxLines="3"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:textStyle="italic"
+            android:text="@{restaurant.description}"
+            tools:text="Food, Quick"/>
+
+        <TextView
+            android:id="@+id/restaurant_details_dist"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="21sp"
+            android:gravity="center"
+            android:textStyle="bold"
+            app:lat="@{restaurant.address.lat}"
+            app:lon="@{restaurant.address.lng}"
+            tools:text="3.5mi Away" />
+
+        <TextView
+            android:id="@+id/restaurant_details_addy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            android:gravity="center"
+            android:text="@{restaurant.address.printableAddress}"
+            tools:text="123 Some Place St"/>
+
+        <ImageView
+            android:id="@+id/restaurant_details_loc_img"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            app:imgLat="@{restaurant.address.lat}"
+            app:imgLon="@{restaurant.address.lng}" />
+    </LinearLayout>
+</layout>

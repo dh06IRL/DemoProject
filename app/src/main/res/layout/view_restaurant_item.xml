@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="restaurant"
+            type="com.cartoaware.mvvm.model.Restaurant" />
+        <variable
+            name="navHandler"
+            type="com.cartoaware.mvvm.utils.NavHandler" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/restaurant_holder"
+        android:layout_width="match_parent"
+        android:layout_margin="16dp"
+        android:layout_height="100dp"
+        android:onClick="@{(v) -> navHandler.onRestaurantClick(v, restaurant.id, restaurant.name)}">
+
+        <ImageView
+            android:id="@+id/restaurant_img"
+            android:layout_width="130dp"
+            android:layout_height="80dp"
+            app:imageUrl="@{restaurant.coverImgUrl}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/restaurant_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@{restaurant.name}"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/restaurant_img"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.36"
+            tools:text="Taco Stand" />
+
+        <TextView
+            android:id="@+id/restaurant_categories"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@{restaurant.description}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/restaurant_img"
+            app:layout_constraintTop_toBottomOf="@+id/restaurant_name"
+            tools:text="Taco,Tequila" />
+
+        <TextView
+            android:id="@+id/restaurant_delivery_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@{restaurant.status}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.90"
+            tools:text="30 minutes" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
