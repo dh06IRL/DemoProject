@@ -89,4 +89,6 @@ public class Restaurant {
     @Expose
     public Double serviceRate;
 
+
+    public boolean isFav;
 }

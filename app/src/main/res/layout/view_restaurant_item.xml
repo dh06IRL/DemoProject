@@ -10,6 +10,9 @@
         <variable
             name="navHandler"
             type="com.cartoaware.mvvm.utils.NavHandler" />
+        <variable
+            name="favHandler"
+            type="com.cartoaware.mvvm.utils.FavHandler" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -41,7 +44,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/restaurant_img"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.36"
+            app:layout_constraintVertical_bias="0.16"
             tools:text="Taco Stand" />
 
         <TextView
@@ -69,5 +72,16 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.90"
             tools:text="30 minutes" />
+
+        <Button
+            android:id="@+id/restaurant_fav_btn"
+            app:layout_constraintTop_toBottomOf="@+id/restaurant_categories"
+            app:layout_constraintStart_toEndOf="@+id/restaurant_img"
+            app:restaurantId="@{restaurant.id}"
+            android:layout_marginStart="16dp"
+            android:textSize="12sp"
+            android:layout_width="150dp"
+            android:layout_height="35dp"
+            android:onClick="@{(v) -> favHandler.onRestaurantFav(v, restaurant.id)}" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

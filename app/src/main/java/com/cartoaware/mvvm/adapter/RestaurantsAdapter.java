@@ -13,6 +13,7 @@ import com.cartoaware.mvvm.model.Restaurant;
 import com.cartoaware.mvvm.utils.Constants;
 import com.cartoaware.mvvm.view.RestaurantDetailsActivity;
 import com.cartoaware.mvvmdemo.databinding.ViewRestaurantItemBinding;
+import com.pixplicity.easyprefs.library.Prefs;
 
 import java.util.List;
 
@@ -61,6 +62,14 @@ public class RestaurantsAdapter extends RecyclerView.Adapter<RestaurantsAdapter.
                         context.startActivity(intent);
                     }
             );
+            restaurantItemBinding.setFavHandler((View v, long restaurantId) ->{
+                if(!Prefs.getBoolean(Long.toString(restaurantId), false)){
+                    Prefs.putBoolean(Long.toString(restaurantId), true);
+                }else{
+                    Prefs.putBoolean(Long.toString(restaurantId), false);
+                }
+                restaurantItemBinding.invalidateAll();
+            });
             restaurantItemBinding.executePendingBindings();
         }
     }

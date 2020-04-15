@@ -1,5 +1,6 @@
 package com.cartoaware.mvvm.view;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 
@@ -20,12 +21,14 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
+    private Context mContext;
     private ArrayList<Restaurant> restaurantsList = new ArrayList<>();
     private RestaurantsAdapter restaurantAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mContext = this;
         MainActivityBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         getSupportActionBar().setTitle(getString(R.string.main_title));
 
@@ -34,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         restaurantsViewModel.fetchRestaurants(Constants.DEFAULT_LAT, Constants.DEFAULT_LON);
 
         DividerItemDecoration itemDecorator = new DividerItemDecoration(getBaseContext(), DividerItemDecoration.VERTICAL);
-        itemDecorator.setDrawable(ContextCompat.getDrawable(getBaseContext(), R.drawable.restaurants_divider));
+        itemDecorator.setDrawable(ContextCompat.getDrawable(mContext, R.drawable.restaurants_divider));
         binding.restaurantsRecyclerview.addItemDecoration(itemDecorator);
         binding.restaurantsRecyclerview.setHasFixedSize(true);
 

@@ -4,8 +4,8 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.cartoaware.mvvm.model.Restaurant;
 import com.cartoaware.mvvm.data.RestaurantRepository;
+import com.cartoaware.mvvm.model.Restaurant;
 
 import java.util.List;
 

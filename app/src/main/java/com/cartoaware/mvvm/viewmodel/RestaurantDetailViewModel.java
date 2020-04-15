@@ -4,8 +4,8 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.cartoaware.mvvm.model.RestaurantDetail;
 import com.cartoaware.mvvm.data.RestaurantRepository;
+import com.cartoaware.mvvm.model.RestaurantDetail;
 
 
 public class RestaurantDetailViewModel extends ViewModel {
@@ -20,5 +20,4 @@ public class RestaurantDetailViewModel extends ViewModel {
     public LiveData<RestaurantDetail> getRestaurantDetailsData() {
         return restaurantDetailLiveData;
     }
-
 }

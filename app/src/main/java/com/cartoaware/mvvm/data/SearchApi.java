@@ -1,12 +1,16 @@
 package com.cartoaware.mvvm.data;
 
+import com.cartoaware.mvvm.model.AuthBody;
+import com.cartoaware.mvvm.model.AuthResponse;
 import com.cartoaware.mvvm.model.Restaurant;
 import com.cartoaware.mvvm.model.RestaurantDetail;
 
 import java.util.List;
 
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
@@ -20,5 +24,8 @@ public interface SearchApi {
 
     @GET("restaurant/{restaurant_id}")
     Call<RestaurantDetail> getRestaurantDetails(@Path("restaurant_id") Long id);
+
+    @POST("auth/token/")
+    Call<AuthResponse> authUser(@Body AuthBody authBody);
 }
 

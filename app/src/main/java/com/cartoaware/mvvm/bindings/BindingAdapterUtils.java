@@ -1,6 +1,7 @@
 package com.cartoaware.mvvm.bindings;
 
 import android.location.Location;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -12,6 +13,7 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.cartoaware.mvvm.utils.Constants;
 import com.cartoaware.mvvm.utils.LocationUtils;
 import com.cartoaware.mvvmdemo.R;
+import com.pixplicity.easyprefs.library.Prefs;
 
 
 public class BindingAdapterUtils {
@@ -47,6 +49,16 @@ public class BindingAdapterUtils {
             textView.setText(String.format("%.2f", rLocation.distanceTo(uLocation) * 0.00062137119) + "mi Away");
         }else{
             textView.setText("-");
+        }
+    }
+
+
+    @BindingAdapter("restaurantId")
+    public static void checkIfFav(Button button, Long restaurantId){
+        if(!Prefs.getBoolean(Long.toString(restaurantId), false)){
+            button.setText("Add Fav");
+        }else{
+            button.setText("Remove Fav");
         }
     }
 }
